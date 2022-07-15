@@ -4,7 +4,7 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
 
   def update_posts_counter
-    author.posts_counter = Post.where(author_id: author_id).size
+    author.posts_counter = Post.where(author_id:).size
   end
 
   def recent_comments
