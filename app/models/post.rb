@@ -3,7 +3,7 @@ class Post < ApplicationRecord
   validates :title, length: { maximum: 250 }
   validates :comments_counter, comparison: { greater_than_or_equal_to: 0 }
   validates :likes_counter, comparison: { greater_than_or_equal_to: 0 }
-  
+
   belongs_to :author, class_name: 'User', foreign_key: :author_id, counter_cache: :posts_counter
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
