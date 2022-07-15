@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-  validates :title, precense: true
+  validates_presence_of :title
   validates :title, length: { maximum: 250 }
   validates :comments_counter, comparison: { greater_than_or_equal_to: 0 }
   validates :likes_counter, comparison: { greater_than_or_equal_to: 0 }
