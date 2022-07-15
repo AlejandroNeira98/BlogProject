@@ -5,7 +5,7 @@ RSpec.describe Comment, type: :model do
   second_user = User.new(name: 'Lilly', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Poland.')
   first_post = Post.new(author: first_user, title: 'Hello', text: 'This is my first post')
 
-  subject { Comment.new(post: first_post, author_id: second_user.id, text: 'Hi Tom!' ) }
+  subject { Comment.new(post: first_post, author_id: second_user.id, text: 'Hi Tom!') }
 
   before { subject.save }
 

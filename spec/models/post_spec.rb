@@ -5,7 +5,7 @@ RSpec.describe Post, type: :model do
   subject { Post.new(author: first_user, title: 'Hello', text: 'This is my first post') }
 
   before { subject.save }
-  
+
   it 'title should be present' do
     subject.title = nil
     expect(subject).to_not be_valid
