@@ -22,7 +22,10 @@ To get a local copy follow these simple example steps.
 `cd BlogProject`  
 3.- Install the project's dependencies by running this command:   
 `bundle install`
-4.- To run the application the following command
+4.- In PostgreSQL create a database, remember the name, the owner and the password
+5.- Go to config/database.yml under development specify the database name, owner(username), and password
+6.- To migrate from rails to your database run 'rails db:migrate'
+6.- To run the application the following command
 `rails s`
 
 ## Author
