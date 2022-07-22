@@ -1,4 +1,4 @@
 <h1> Users list </h1>
 <% @users.each do |user| %>
-  <% render partial: "shared/usercard", locals: {user: user}%>
+  <%= render partial: "shared/usercard", locals: {user: user}%>
 <% end %>
