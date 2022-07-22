@@ -1,1 +1,10 @@
 <h1> User Page</h1>
+<%= render partial: "shared/usercard", locals: { user: @user} %>
+<div>
+  <div>Bio</div>
+  <div>
+    <%= @user.bio %>
+</div>
+<% @user.posts.each do |post|%>
+  <%= render partial: "shared/postcard", locals: { post: post} %>
+<% end %>
