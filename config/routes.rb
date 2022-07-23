@@ -8,9 +8,10 @@ Rails.application.routes.draw do
   get '/login', to: 'login#index'
 
   resources :likes, only: [ :create ]
-  resources :comments, only: [ :create, :new ]
 
   resources :users, only: [ :index, :show ] do
-    resources :posts, only: [:index, :show, :new, :create]
+    resources :posts, only: [:index, :show, :new, :create] do
+      resources :comments, only: [ :create, :new ]
+    end
   end
 end
