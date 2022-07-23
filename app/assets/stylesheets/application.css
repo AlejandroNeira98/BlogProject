@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+.container {
+  display: flex;
+  flex-direction: column;
+  border: solid black 3px;
+  margin-top: 5px;
+  padding: 5px;
+}
+
+h2, h3, h4 {
+  margin: 4px 0 4px 0;
+}
