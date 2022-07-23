@@ -2,6 +2,9 @@
   <h4>
     <%= post.title %>
   </h4>
+  <div style="align-self: flex-end">
+    <%= render partial: "shared/like", locals: {post: post}%>
+  </div>
   <div>
     <%= post.text[0, 50] %> ...
   </div>
