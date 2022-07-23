@@ -2,7 +2,7 @@
 
 # BlogProject
 
-> Ruby on Rails based project
+> This project consists in the creation of a full-stack web application where the users are able to create posts, and provide comments and likes to the posts of other users.
 
 
 ## Built With
