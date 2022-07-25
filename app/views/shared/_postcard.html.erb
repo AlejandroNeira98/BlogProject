@@ -1,0 +1,12 @@
+<div class="container">
+  <h4>
+    <%= post.title %>
+  </h4>
+  <div>
+    <%= post.text[0, 50] %> ...
+  </div>
+  <div style="align-self: flex-end">
+    <span >Comments: <%= post.comments_counter || 0 %></span>
+    <span >Likes: <%= post.likes_counter || 0 %></span>
+  </div>
+</div>
