@@ -1,6 +1,6 @@
 <div class="container">
   <h4>
-    <%= post.title %>
+    <%= link_to post.title, user_post_path(@user, post)  %>
   </h4>
   <div style="align-self: flex-end">
     <%= render partial: "shared/like", locals: {post: post}%>
