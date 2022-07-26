@@ -5,7 +5,7 @@
 
   <div class="container" >
     <h2 style="margin-left: 3px;">
-      <%= user.name %>
+      <%= link_to user.name, user_path(user)  %>
     </h2>
     <div style="align-self: flex-end; margin-right: 3px;">
       Number of posts:<%= user.posts_counter || 0%>
