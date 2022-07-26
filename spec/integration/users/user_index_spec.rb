@@ -12,22 +12,14 @@ RSpec.describe 'User index page', type: :feature do
       photo: 'https://scitechdaily.com/images/Human-Brain-Memories-Neurons.jpg',
       bio: 'A teacher from Poland',
     )
-    Post.create(author: @first_user, title: 'First Post', text: 'This is my first post')
-    Post.create(author: @first_user, title: 'Second Post', text: 'This is my second post')
-    post = Post.first
-    Comment.create(author: @second_user, post:, text: 'Hi Tom!')
-    Comment.create(author: @second_user, post:, text: 'Hi Tom! 2')
   end
 
   after :all do
-    Comment.destroy_all
-    Like.destroy_all
-    Post.destroy_all
     @first_user.destroy
     @second_user.destroy
   end
 
-  before :each do 
+  before :each do
     visit users_path
   end
 
