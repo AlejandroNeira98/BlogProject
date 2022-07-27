@@ -1,25 +1,28 @@
 require 'rails_helper'
 
-RSpec.describe 'User index page', type: :feature do
+RSpec.describe 'User index page test', type: :feature do
   before :all do
-    @first_user ||= User.create(
+    Comment.all.destroy_all
+    Like.all.destroy_all
+    Post.all.destroy_all
+    User.delete_all
+
+    @first_user = User.create(
+      id: 1,
       name: 'Tom',
       photo: 'https://scitechdaily.com/images/Human-Brain-Memories-Neurons.jpg',
-      bio: 'A teacher from Mexico',
+      bio: 'A teacher from Mexico'
     )
-    @second_user ||= User.create(
+    @second_user = User.create(
+      id: 2,
       name: 'Lilly',
       photo: 'https://scitechdaily.com/images/Human-Brain-Memories-Neurons.jpg',
-      bio: 'A teacher from Poland',
+      bio: 'A teacher from Poland'
     )
-  end
-
-  after :all do
-    @first_user.destroy
-    @second_user.destroy
   end
 
   before :each do
+    puts @first_user 
     visit users_path
   end
 
@@ -37,12 +40,12 @@ RSpec.describe 'User index page', type: :feature do
 
   it 'I can see the number of posts each user has written.' do
     User.all.each do |user|
-      expect(page).to have_content("Number of posts: #{user.posts_counter}")
+      expect(page).to have_content("Number of posts:#{user.posts_counter}")
     end
   end
 
   it 'When click on a user, is redirected to that user\'s show page' do
-    find_link(User.first.name).click
-    expect(page).to have_current_path("/users/#{User.first.id}")
+    find_link(@first_user.name).click
+    expect(page).to have_current_path("/users/#{@first_user.id}")
   end
 end

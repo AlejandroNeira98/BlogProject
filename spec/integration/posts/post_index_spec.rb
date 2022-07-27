@@ -2,39 +2,38 @@ require 'rails_helper'
 
 RSpec.describe 'Post index page test', type: :feature do
   before :all do
-    @first_user ||= User.create(
-      name: 'Tom',
-      photo: 'https://scitechdaily.com/images/Human-Brain-Memories-Neurons.jpg',
-      bio: 'A teacher from Mexico',
-    )
-    @second_user ||= User.create(
-      name: 'Lilly',
-      photo: 'https://scitechdaily.com/images/Human-Brain-Memories-Neurons.jpg',
-      bio: 'A teacher from Poland',
-    )
-    Post.create(author: @first_user, title: 'First Post', text: 'This is my first post')
-    Post.create(author: @first_user, title: 'Second Post', text: 'This is my second post')
-    Post.create(author: @first_user, title: 'Third Post', text: 'This is my third post')
-    @post = Post.first
-    Comment.create(author: @second_user, post: @post, text: 'Hi Tom!')
-    Comment.create(author: @second_user, post: @post, text: 'Hi Tom! 2')
-    @comment = Comment.first
-  end
-
-  before :each do
-    visit user_posts_path(@first_user)
-  end
-
-  after :all do
     Comment.all.destroy_all
     Like.all.destroy_all
     Post.all.destroy_all
-    @first_user.destroy
-    @second_user.destroy
+    User.delete_all
+
+    @first_user = User.new(
+      name: 'Tom',
+      photo: 'https://scitechdaily.com/images/Human-Brain-Memories-Neurons.jpg',
+      bio: 'A teacher from Mexico'
+    )
+    @first_user.save
+
+    @second_user = User.create(
+      name: 'Lilly',
+      photo: 'https://scitechdaily.com/images/Human-Brain-Memories-Neurons.jpg',
+      bio: 'A teacher from Poland'
+    )
+    @post = Post.create(id: 1, author_id: @first_user.id, title: 'First Post', text: 'This is my first post')
+    Post.create(id: 2, author_id: @first_user.id, title: 'Second Post', text: 'This is my second post')
+    Post.create(id: 3, author_id: @first_user.id, title: 'Third Post', text: 'This is my third post')
+
+    @comment = Comment.create(id: 1, author_id: @second_user.id, post_id: @post.id, text: 'Hi Tom!')
+    Comment.create(id: 2, author_id: @second_user.id, post_id: @post.id, text: 'Hi Tom! 2')
+  end
+
+  before :each do
+    p @first_user
+    visit user_posts_url(@first_user)
   end
 
   it 'I can see the user\'s profile picture' do
-    expect(page.has_xpath?("//img[@src = '#{ @first_user.photo}' ]"))
+    expect(page.has_xpath?("//img[@src = '#{@first_user.photo}' ]"))
   end
 
   it 'I can see the user\'s username' do
@@ -42,7 +41,7 @@ RSpec.describe 'Post index page test', type: :feature do
   end
 
   it 'I can see the number of posts the user has written' do
-    expect(page).to have_content("Number of posts: #{@first_user.posts_counter}")
+    expect(page).to have_content("Number of posts:#{@first_user.posts_counter}")
   end
 
   it 'I can see a post\'s title.' do
