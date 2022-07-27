@@ -8,7 +8,7 @@ RSpec.describe 'Post index page test', type: :feature do
     User.delete_all
 
     @first_user = User.new(
-    id: 1,
+      id: 1,
       name: 'Tom',
       photo: 'https://scitechdaily.com/images/Human-Brain-Memories-Neurons.jpg',
       bio: 'A teacher from Mexico',
@@ -31,7 +31,6 @@ RSpec.describe 'Post index page test', type: :feature do
   end
 
   before :each do
-    p @first_user
     visit user_posts_url(@first_user)
   end
 
@@ -44,7 +43,7 @@ RSpec.describe 'Post index page test', type: :feature do
   end
 
   it 'I can see the number of posts the user has written' do
-    @post.update_posts_counter
+    @first_user.posts_counter = @post.update_posts_counter
     expect(page).to have_content("Number of posts:#{@first_user.posts_counter}")
   end
 

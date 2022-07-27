@@ -45,9 +45,8 @@ RSpec.describe 'User index page test', type: :feature do
   end
 
   it 'When click on a user, is redirected to that user\'s show page' do
-    sleep(5)
-    find_link(@first_user.name).click
-    sleep(5)
+    
+    find_link(href: "/users/#{@first_user.id}").click
     expect(page).to have_current_path("/users/#{@first_user.id}")
   end
 end

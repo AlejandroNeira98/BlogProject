@@ -42,11 +42,12 @@ RSpec.describe 'Post show page test', type: :feature do
   end
 
   it 'I can see how many comments it has' do
+    @post.comments_counter = @comment.update_comments_counter
     expect(page).to have_content("Comments: #{@post.comments_counter}")
   end
 
   it 'I can see how many likes it has' do
-    @like.update_likes_counter
+    @post.likes_counter = @like.update_likes_counter
     expect(page).to have_content("Likes: #{@post.likes_counter}")
   end
 
