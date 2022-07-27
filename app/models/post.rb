@@ -9,10 +9,10 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
 
   def update_posts_counter
-    author.posts_counter = Post.where(author_id:).size
+    author.posts_counter = Post.where(author_id: author.id).size
   end
 
   def recent_comments
-    Comment.where(post_id: id).order(created_at: :desc).limit(5)
+    Comment.includes(:author).where(post_id: id).order(created_at: :desc).limit(5)
   end
 end

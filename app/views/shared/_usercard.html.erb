@@ -1,12 +1,15 @@
 <div>
   <div>
-    <img>
+    <img src="<%= user.photo %>">
   </div>
 
   <div class="container" >
-    <h2 style="margin-left: 3px;">
-      <%= user.name %>
-    </h2>
+    <a href = "/users/<%= user.id %>">
+      <h2 style="margin-left: 3px;">
+        <%=  user.name %>
+      </h2>
+    </a>
+    
     <div style="align-self: flex-end; margin-right: 3px;">
       Number of posts:<%= user.posts_counter || 0%>
     </div>
