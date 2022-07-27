@@ -8,22 +8,32 @@ RSpec.describe 'User index page test', type: :feature do
     User.delete_all
 
     @first_user = User.create(
-      id: 1,
       name: 'Tom',
       photo: 'https://scitechdaily.com/images/Human-Brain-Memories-Neurons.jpg',
-      bio: 'A teacher from Mexico'
+      bio: 'A teacher from Mexico',
+      posts_counter: 0
     )
+
     @second_user = User.create(
-      id: 2,
       name: 'Lilly',
       photo: 'https://scitechdaily.com/images/Human-Brain-Memories-Neurons.jpg',
-      bio: 'A teacher from Poland'
+      bio: 'A teacher from Poland',
+      posts_counter: 0
     )
+    @post = Post.create(author_id: @first_user.id, title: 'First Post', text: 'This is my first post',
+                        likes_counter: 0, comments_counter: 0)
+    Post.create(author_id: @first_user.id, title: 'Second Post', text: 'This is my second post', likes_counter: 0,
+                comments_counter: 0)
+    Post.create(author_id: @first_user.id, title: 'Third Post', text: 'This is my third post', likes_counter: 0,
+                comments_counter: 0)
+
+    @comment = Comment.create(author_id: @second_user.id, post_id: @post.id, text: 'Hi Tom!')
+    Comment.create(author_id: @second_user.id, post_id: @post.id, text: 'Hi Tom! 2')
   end
 
   before :each do
-    puts @first_user 
     visit users_path
+    puts page.body
   end
 
   it 'I can see the username of all other users' do

@@ -22,9 +22,12 @@ RSpec.describe 'Post index page test', type: :feature do
       bio: 'A teacher from Poland',
       posts_counter: 0
     )
-    @post = Post.create(author_id: @first_user.id, title: 'First Post', text: 'This is my first post', likes_counter: 0, comments_counter: 0)
-    Post.create(author_id: @first_user.id, title: 'Second Post', text: 'This is my second post', likes_counter: 0, comments_counter: 0)
-    Post.create(author_id: @first_user.id, title: 'Third Post', text: 'This is my third post', likes_counter: 0, comments_counter: 0)
+    @post = Post.create(author_id: @first_user.id, title: 'First Post', text: 'This is my first post',
+                        likes_counter: 0, comments_counter: 0)
+    Post.create(author_id: @first_user.id, title: 'Second Post', text: 'This is my second post', likes_counter: 0,
+                comments_counter: 0)
+    Post.create(author_id: @first_user.id, title: 'Third Post', text: 'This is my third post', likes_counter: 0,
+                comments_counter: 0)
 
     @comment = Comment.create(id: 1, author_id: @second_user.id, post_id: @post.id, text: 'Hi Tom!')
     Comment.create(id: 2, author_id: @second_user.id, post_id: @post.id, text: 'Hi Tom! 2')
