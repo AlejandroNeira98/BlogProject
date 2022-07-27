@@ -8,6 +8,7 @@ RSpec.describe 'Post index page test', type: :feature do
     User.delete_all
 
     @first_user = User.new(
+    id: 1,
       name: 'Tom',
       photo: 'https://scitechdaily.com/images/Human-Brain-Memories-Neurons.jpg',
       bio: 'A teacher from Mexico'
