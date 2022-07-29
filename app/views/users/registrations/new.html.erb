@@ -9,6 +9,21 @@
   </div>
 
   <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: 'Enter Full Name'%>
+  </div>
+
+  <div class="field">
+    <%= f.label :Bio %><br />
+    <%= f.text_field :bio, autofocus: true, autocomplete: "bio", placeholder: 'Enter Bio' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Photo %><br />
+    <%= f.text_field :photo, autofocus: true, autocomplete: "photo", placeholder: 'Enter Photo Link' %>
+  </div>
+
+  <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
