@@ -3,6 +3,6 @@ class Like < ApplicationRecord
   belongs_to :post, counter_cache: :likes_counter
 
   def update_likes_counter
-    post.likes_counter = Like.where(post_id:).size
+    post.likes_counter = Like.where(post_id: post.id).size
   end
 end
